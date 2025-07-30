@@ -1,17 +1,99 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Voyage Évasion{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+    <link rel="icon" href="{{ asset('favicon.ico') }}">
+
+    {% block stylesheets %}
+      {{ encore_entry_link_tags('app') }}
+      {% block page_stylesheets %}
+        {% if page_asset is defined %}
+          {{ encore_entry_link_tags(page_asset) }}
+        {% endif %}
+      {% endblock %}
+    {% endblock %}
+  </head>
+
+  <body>
+    <header>
+      <input type="checkbox" id="burger-toggle" />
+      <label for="burger-toggle" class="burger-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <nav class="menu">
+        <ul>
+          <li><a href="{{ path('home') }}">Accueil</a></li>
+          <li>
+            <a href="{{ path('destinations') }}">Destinations</a>
+            <ul>
+              <li>
+                <a href="{{ path('europe') }}">Europe</a>
+                <ul>
+                  <li><a href="{{ path('france') }}">France</a></li>
+                  <li><a href="{{ path('espagne') }}">Espagne</a></li>
+                  <li><a href="{{ path('italie') }}">Italie</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="{{ path('asie') }}">Asie</a>
+                <ul>
+                  <li><a href="{{ path('japon') }}">Japon</a></li>
+                  <li><a href="{{ path('thailande') }}">Thaïlande</a></li>
+                  <li><a href="{{ path('vietnam') }}">Vietnam</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="{{ path('amerique') }}">Amériques</a>
+                <ul>
+                  <li><a href="{{ path('usa') }}">États-Unis</a></li>
+                  <li><a href="{{ path('bresil') }}">Brésil</a></li>
+                  <li><a href="{{ path('argentine') }}">Argentine</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="{{ path('afrique') }}">Afrique</a>
+                <ul>
+                  <li><a href="{{ path('maroc') }}">Maroc</a></li>
+                  <li><a href="{{ path('afriquedusud') }}">Afrique du Sud</a></li>
+                  <li><a href="{{ path('egypte') }}">Égypte</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="{{ path('iles') }}">Îles</a>
+                <ul>
+                  <li><a href="{{ path('tahiti') }}">Tahiti</a></li>
+                  <li><a href="{{ path('maldives') }}">Maldives</a></li>
+                  <li><a href="{{ path('reunion') }}">Réunion</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li><a href="{{ path('alaune') }}">À la une</a></li>
+          <li><a href="{{ path('contact') }}">Contact</a></li>
+          <li><a href="{{ path('about') }}">Qui sommes-nous ?</a></li>
+          <li><a href="{{ path('login') }}">Connexion</a></li>
+          <li><a href="{{ path('register') }}">Inscription</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    {% block body %}{% endblock %}
+
+    {% block javascripts %}
+      {{ encore_entry_script_tags('app') }}
+      {% block page_javascripts %}
+        {% if page_asset is defined %}
+          {{ encore_entry_script_tags(page_asset) }}
+          {{ encore_entry_link_tags(page_asset) }}
+        {% endif %}
+      {% endblock %}
+    {% endblock %}
+
+  </body>
 </html>
