@@ -75,8 +75,8 @@ voyage_evasion/
 #### 1. Cloner le projet :
 
 ```bash
-git clone https://github.com/ton-utilisateur/voyage_evasion.git
-cd voyage_evasion
+git clone https://github.com/rzvirus/voyage-evasion-symfony.git
+cd voyage_evasion_symfony
 ```
 
 #### 2. Installer les dépendances JavaScript :
